@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Build output
+dist
+build
+
+# Testing
+coverage
+.nyc_output
+
+# Environment (절대 이미지에 포함하지 않음)
+.env
+.env.*
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+docs
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Misc
+*.log
+*.md
+!prisma/schema.prisma

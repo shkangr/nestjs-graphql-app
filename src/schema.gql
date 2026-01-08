@@ -1,0 +1,115 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  accessToken: String!
+  user: User!
+}
+
+type Comment {
+  author: User
+  authorId: String!
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  post: Post
+  postId: String!
+  updatedAt: DateTime!
+}
+
+input CreateCommentDto {
+  content: String!
+  postId: String!
+}
+
+input CreatePostDto {
+  content: String!
+  published: Boolean
+  title: String!
+}
+
+input CreateUserDto {
+  email: String!
+  name: String!
+  password: String!
+  role: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginDto {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createComment(createCommentDto: CreateCommentDto!): Comment!
+  createPost(createPostDto: CreatePostDto!): Post!
+  login(loginDto: LoginDto!): AuthResponse!
+  register(createUserDto: CreateUserDto!): AuthResponse!
+  removeComment(id: ID!): Comment!
+  removePost(id: ID!): Post!
+  removeUser(id: ID!): User!
+  updateComment(id: ID!, updateCommentDto: UpdateCommentDto!): Comment!
+  updatePost(id: ID!, updatePostDto: UpdatePostDto!): Post!
+  updateUser(id: ID!, updateUserDto: UpdateUserDto!): User!
+}
+
+type Post {
+  author: User
+  authorId: String!
+  comments: [Comment!]
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  published: Boolean!
+  title: String!
+  updatedAt: DateTime!
+}
+
+type Query {
+  comment(id: ID!): Comment!
+  comments: [Comment!]!
+  me: User!
+  post(id: ID!): Post!
+  posts: [Post!]!
+  user(id: ID!): User!
+  users: [User!]!
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+input UpdateCommentDto {
+  content: String
+}
+
+input UpdatePostDto {
+  content: String
+  published: Boolean
+  title: String
+}
+
+input UpdateUserDto {
+  email: String
+  name: String
+  password: String
+  role: String
+}
+
+type User {
+  comments: [Comment!]
+  createdAt: DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  posts: [Post!]
+  role: Role!
+  updatedAt: DateTime!
+}
